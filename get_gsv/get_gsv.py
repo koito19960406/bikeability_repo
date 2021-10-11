@@ -299,6 +299,8 @@ def getGSV(inputCSV,outputImgFolder):
     import requests
     import tqdm
     import os
+    
+    import config
 
     if not os.path.exists(outputImgFolder):
         os.makedirs(outputImgFolder)
@@ -307,7 +309,7 @@ def getGSV(inputCSV,outputImgFolder):
 
     # set parameters
     FOV=90
-    KEY='AIzaSyDmCPxG78h7L9Ts0HJH8ZI_ttAntfRHLR0'
+    KEY=config.KEY
     SIZE=640
     SOURCE='outdoor'
     
