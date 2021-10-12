@@ -2,7 +2,8 @@
 
 This repo contains codes used to conduct research for the following paper:
 [Assessing bikeability with street view imagery and computer vision](https://authors.elsevier.com/a/1dn8b,M0mRJjVR)
-cite this paper:
+
+Cite this paper (in BibTex):
 >@article{2021_trc_bikeability,
   author = {Koichi Ito and Filip Biljecki},
   title = {Assessing bikeability with street view imagery and computer vision},
