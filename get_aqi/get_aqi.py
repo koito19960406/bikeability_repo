@@ -198,7 +198,21 @@ def getStation(city_name,chrome_path,output_folder):
     from selenium.common.exceptions import TimeoutException, NoSuchElementException
     from webdriver_manager.chrome import ChromeDriverManager
     import time
-
+    import sys
+    
+    # getting the name of the directory
+    # where the this file is present.
+    current = os.path.dirname(os.path.realpath(__file__))
+    
+    # Getting the parent directory name
+    # where the current directory is present.
+    parent = os.path.dirname(current)
+    
+    # adding the parent directory to 
+    # the sys.path.
+    sys.path.append(parent)
+    import config
+    
     # create output_folder
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -240,7 +254,7 @@ def getStation(city_name,chrome_path,output_folder):
     # create a new column for geometry
     # geopy.geocoders.options.default_user_agent = "yourmeial@emailprovider.com"
     station_df['geometry'] = station_df['name'].\
-        apply(lambda x: gpd.tools.geocode(x, provider="google",api_key='AIzaSyDmCPxG78h7L9Ts0HJH8ZI_ttAntfRHLR0')['geometry'])
+        apply(lambda x: gpd.tools.geocode(x, provider="google",api_key=config.KEY)['geometry'])
     # get lat and lon
     station_df['lat']=station_df['geometry'].map(lambda p: p.y)
     station_df['lon']=station_df['geometry'].map(lambda p: p.x)

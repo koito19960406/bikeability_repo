@@ -164,6 +164,19 @@ def GSVpanoMetadataCollector(samplesFeatureClass,num,ouputTextFolder):
     import math
     import tqdm
     
+    # getting the name of the directory
+    # where the this file is present.
+    current = os.path.dirname(os.path.realpath(__file__))
+    
+    # Getting the parent directory name
+    # where the current directory is present.
+    parent = os.path.dirname(current)
+    
+    # adding the parent directory to 
+    # the sys.path.
+    sys.path.append(parent)
+    import config
+    
     if not os.path.exists(ouputTextFolder):
         os.makedirs(ouputTextFolder)
     
@@ -199,7 +212,7 @@ def GSVpanoMetadataCollector(samplesFeatureClass,num,ouputTextFolder):
             point=points.iloc[i,:]
             lon = point['lon']
             lat = point['lat']
-            key = 'AIzaSyDmCPxG78h7L9Ts0HJH8ZI_ttAntfRHLR0'
+            key = config.KEY
             input_df=pd.DataFrame({'lon':[lon],
                                    'lat':[lat]})
             input_gdf=gpd.GeoDataFrame(input_df, geometry=gpd.points_from_xy(input_df.lon, input_df.lat))
@@ -299,9 +312,21 @@ def getGSV(inputCSV,outputImgFolder):
     import requests
     import tqdm
     import os
+    import sys
+  
+    # getting the name of the directory
+    # where the this file is present.
+    current = os.path.dirname(os.path.realpath(__file__))
     
+    # Getting the parent directory name
+    # where the current directory is present.
+    parent = os.path.dirname(current)
+    
+    # adding the parent directory to 
+    # the sys.path.
+    sys.path.append(parent)
     import config
-
+    
     if not os.path.exists(outputImgFolder):
         os.makedirs(outputImgFolder)
 
